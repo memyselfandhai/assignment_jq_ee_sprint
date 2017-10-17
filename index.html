@@ -10,25 +10,29 @@
 <p>
   <input type="text" id="text" name="text" maxlength="32"/>
   <span id="text-counter"></span>
+  <span id="text-error" class="error">Text must be 4-32 characters</span>
 </p>
 
 
 <p>
   <textarea placehoder="a lot more text" id="textarea" maxlength="140"></textarea>
   <span id="textarea-counter"></span>
+  <span id="textarea-error" class="error">Text must be 4-140 characters</span>
 </p>
 
 
 <input type="password" id="password" placeholder="Password" maxlength="16"/>
 <span id="pw-counter"></span>
+<span id="pw-error" class="error">Password must be 6-16 characters</span>
 
 
 <p>
   <input type="password" id="confirm-password" placeholder="Confirm Password" maxlength="16"/>
   <span id="pw-confirm-counter"></span>
+  <span id="pw-confirm-error" class="error">Passwords do not match</span>
 </p>
 
-<p id="pw-error">Password confirmation doesn't match</p>
+<button id="submit" name="submit">Submit</button>
 
 
 
