@@ -52,10 +52,10 @@ button_validate( $('#textarea'), 4, $('#textarea-error') );
 
 // THE DROPDOWN
 
-$('.top').children().hide();
+$('.options').children().hide();
 
 $('.top').on('click', function() {
-     $(this).children().slideToggle(500);
+     $('.options').children().slideToggle(500);
 });
 
 $('li').hover(
@@ -63,4 +63,9 @@ $('li').hover(
     $(this).addClass("hover");
 }, function() {
     $(this).removeClass("hover");
+});
+
+$('li').on('click', function() {
+  $('.top').text( $(this).text() );
+  $('.options').children().slideToggle(500);
 });
