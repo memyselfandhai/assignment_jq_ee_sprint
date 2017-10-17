@@ -17,8 +17,6 @@ text_validate( $("#textarea"), 140, $("#textarea-counter"))
 text_validate( $("#password"), 16, $("#pw-counter"))
 text_validate( $("#confirm-password"), 16, $("#pw-confirm-counter"))
 
-
-
 // error messages
 $('.error').hide();
 
@@ -49,3 +47,20 @@ button_validate( $('#password'), 6, $('#pw-error') );
 button_validate( $('#confirm-password'), 6, $('#pw-confirm-error') );
 button_validate( $('#text'), 4, $('#text-error') );
 button_validate( $('#textarea'), 4, $('#textarea-error') );
+
+
+
+// THE DROPDOWN
+
+$('.top').children().hide();
+
+$('.top').on('click', function() {
+     $(this).children().slideToggle(500);
+});
+
+$('li').hover(
+  function() {
+    $(this).addClass("hover");
+}, function() {
+    $(this).removeClass("hover");
+});
