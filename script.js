@@ -69,3 +69,15 @@ $('li').on('click', function() {
   $('.top').text( $(this).text() );
   $('.options').children().slideToggle(500);
 });
+
+
+// THE PHOTO TAGGING BOX
+
+// when the mouse enters the DIV/photo
+// use the coordiantes from the mouse to
+// overlay a box around the mouse
+
+$('img').mousemove (function(event) {
+  console.log(event.pageX);
+
+});
