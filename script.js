@@ -1,5 +1,6 @@
 "use strict";
 
+// PART 1:
 // length validator
 var text_validate = function(input, max_chars, counter) {
     input.on("keyup", function () {
@@ -49,7 +50,7 @@ button_validate( $('#text'), 4, $('#text-error') );
 button_validate( $('#textarea'), 4, $('#textarea-error') );
 
 
-
+// PART 2:
 // THE DROPDOWN
 
 $('.options').children().hide();
@@ -65,19 +66,83 @@ $('li').hover(
     $(this).removeClass("hover");
 });
 
-$('li').on('click', function() {
+$('li', '.options').on('click', function() {
   $('.top').text( $(this).text() );
   $('.options').children().slideToggle(500);
 });
 
 
+
+
+// PART 3:
 // THE PHOTO TAGGING BOX
+var isClicked = false;
 
-// when the mouse enters the DIV/photo
-// use the coordiantes from the mouse to
-// overlay a box around the mouse
+// creating hover outline and attaching to PHOTO
+var $outline = $('<div class="square"></div>');
 
-$('img').mousemove (function(event) {
-  console.log(event.pageX);
+$outline.appendTo( $('.photo') ).hide();
+$('#dropdown').appendTo($outline);
+$('#dropdown').children().hide();
 
+// changing position of OUTLINE box
+// not sure why the outline is following cursor outside of #photo??
+var outline_hover = function () {
+    $('#photo').mousemove( function(event) {
+        $outline.show();
+        $outline.css("left", event.pageX-50)
+                .css("top", event.pageY-50);
+    })
+
+    $('.square').mouseout ( function(event) {
+      console.log("hi there")
+      $(this).off('mousemove');
+    })
+  };
+
+outline_hover();
+
+// sliding out menu on click
+
+  var isClicked = false;
+
+  $('#photo').on ("click", function(){
+    if (isClicked === false){
+      $outline.css("left", event.pageX-50)
+              .css("top", event.pageY-50);
+      $('#photo').off('mousemove');
+      $('#dropdown').children().slideToggle(500);
+      isClicked = true;
+    }
+});
+
+// resetting the tagging box
+// fix this so it $exit only registers once
+  var $exit = $('body').not('#dropdown');
+
+
+  $('#reset').on ('click', function(event) {
+    if (isClicked) {
+      $('#dropdown').children().slideToggle(500);
+      $outline.hide();
+      outline_hover();
+      isClicked = false;
+    }});
+
+
+// selecting from dropdown and tagging box
+
+$("#dropdown").children().on ('click', function(e){
+  var chosen = $(this).text();
+  e.stopPropagation();
+  $outline.clone()
+          .addClass("tagged")
+          .removeClass("square")
+          .appendTo(".photo")
+          .attr('id', chosen);
+  $(`#${chosen}`).children().first()
+              .replaceWith(`<p class="tagged_text"> ${chosen}</p>`);
+  $('#dropdown').children().slideToggle(500);
+  isClicked = false;
+  outline_hover();
 });

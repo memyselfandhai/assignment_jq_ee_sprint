@@ -7,3 +7,31 @@
   background-color: gray;
   cursor: pointer;
 }
+
+
+.square {
+  border: 1px solid white;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+.tagged {
+  border: 1px solid cyan;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+.tagged_text {
+  color: cyan;
+  position: relative;
+  top: 85px;
+}
+
+#dropdown {
+  color: white;
+  background: black;
+  position: relative;
+  top: 85px;
+}
