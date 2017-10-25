@@ -131,6 +131,7 @@ outline_hover();
 
 
 // selecting from dropdown and tagging box
+// add if statement in order to prevent duplicate tags
 
 $("#dropdown").children().on ('click', function(e){
   var chosen = $(this).text();
